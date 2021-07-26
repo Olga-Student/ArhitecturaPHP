@@ -1,0 +1,22 @@
+<?php
+/** Реализовать удаление элемента массива по его значению.
+ * Обратите внимание на возможные дубликаты!
+ */
+$arr = ['a', 'b', 'c', 'd', 'e'];
+$value = 'b';
+
+function deleteValueInArr($arr, $value)
+{
+    $element = array_search($value, $arr);
+    if ($element) {
+        unset($arr[$element]);
+        $arr = deleteValueInArr($arr, $value);
+    }
+    return $arr;
+}
+
+$arr = deleteValueInArr($arr, $value);
+var_dump($arr);
+
+//unset($arr[array_search($value,$arr)]);
+
